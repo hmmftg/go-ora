@@ -1,6 +1,3 @@
-//go:build kerberos
-// +build kerberos
-
 package main
 
 import (
