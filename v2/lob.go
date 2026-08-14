@@ -150,10 +150,8 @@ func (lob *Lob) putString(data string) error {
 	if lob.variableWidthChar() {
 		if conn.dBVersion.Number < 10200 && lob.littleEndianClob() {
 			strConv, _ = conn.getStrConv(2002)
-			lob.charsetID = 2002
 		} else {
 			strConv, _ = conn.getStrConv(2000)
-			lob.charsetID = 2000
 		}
 	} else {
 		var err error
