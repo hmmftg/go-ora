@@ -4,11 +4,12 @@ import (
 	"database/sql/driver"
 	"errors"
 	"fmt"
-	"github.com/sijms/go-ora/v2/network"
-	"github.com/sijms/go-ora/v2/trace"
 	"io"
 	"reflect"
 	"strings"
+
+	"github.com/sijms/go-ora/v2/network"
+	"github.com/sijms/go-ora/v2/trace"
 )
 
 type Row []driver.Value
@@ -97,7 +98,7 @@ func (resultSet *ResultSet) Close() error {
 }
 
 func (resultSet *ResultSet) Columns() []string {
-	if len(*resultSet.cols) == 0 {
+	if resultSet.cols == nil || len(*resultSet.cols) == 0 {
 		return nil
 	}
 	ret := make([]string, len(*resultSet.cols))
